@@ -1,127 +1,245 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRIMAND | On-Demand Chauffeur Network</title>
-    <!-- Tailwind CSS (Fast, responsive styling with zero setup) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>DRIMAND | Executive Mobility & On-Demand Chauffeur Network</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-                    colors: {
-                        brand: { dark: '#0B0F17', card: '#131926', gold: '#D97706', goldLight: '#F59E0B' }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .glass-card { background: rgba(19, 25, 38, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gold-gradient { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
-        .gold-text { background: linear-gradient(135deg, #FBBF24 0%, #D97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root {
+            --navy-dark: #0B132B;
+            --navy-card: #1C2541;
+            --navy-light: #24305E;
+            --cobalt-primary: #2563EB;
+            --cobalt-bright: #3B82F6;
+            --cobalt-accent: #60A5FA;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-color: #334155;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--navy-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(11, 19, 43, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--cobalt-bright);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cobalt-bright);
+        }
+
+        .btn-cobalt {
+            background: linear-gradient(135deg, var(--cobalt-primary) 0%, var(--cobalt-bright) 100%);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-cobalt:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 8% 80px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: radial-gradient(circle at top, rgba(37, 99, 235, 0.15) 0%, rgba(11, 19, 43, 0) 70%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--navy-card);
+            border: 1px solid var(--cobalt-primary);
+            color: var(--cobalt-accent);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--cobalt-accent) 0%, var(--cobalt-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Card Sections */
+        .features {
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--cobalt-primary);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(37, 99, 235, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cobalt-bright);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 8%;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background-color: #070D1E;
+        }
     </style>
 </head>
-<body class="bg-[#0B0F17] text-slate-100 font-sans selection:bg-amber-500 selection:text-black antialiased">
+<body>
 
-    <!-- Header / Nav -->
-    <nav class="fixed top-0 w-full z-50 border-b border-slate-800/80 bg-[#0B0F17]/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <span class="font-bold text-2xl tracking-wider text-white">DRIMAND<span class="text-amber-500">.</span></span>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-                <a href="#concept" class="hover:text-amber-400 transition-colors">Concept</a>
-                <a href="#services" class="hover:text-amber-400 transition-colors">Tri-Core Model</a>
-                <a href="#safety" class="hover:text-amber-400 transition-colors">Safety Standard</a>
-                <a href="#investors" class="hover:text-amber-400 transition-colors">Pre-Seed Deal</a>
-            </div>
-            <a href="#investors" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider gold-gradient text-slate-950 hover:opacity-90 shadow-lg shadow-amber-500/10">
-                Request Deck
-            </a>
-        </div>
+    <nav>
+        <div class="logo">DRI<span>MAND</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#vetting">5-Phase Vetting</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+        <a href="mailto:suxanmiles@outlook.com" class="btn-cobalt">Get in Touch</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-36 pb-24 md:pt-48 md:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    Reimagining Urban Mobility in Lagos
-                </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
-                    Turn Dead Traffic Hours Into <span class="gold-text">Productive Time</span>.
-                </h1>
-                <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-10">
-                    Asset-light, tech-enabled chauffeur network for private car owners. Work, relax, or travel safely while verified on-demand drivers navigate Lagos traffic.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#waitlist" class="px-8 py-4 rounded-xl font-bold text-center gold-gradient text-slate-950 hover:shadow-xl hover:shadow-amber-500/20 transition-all">
-                        Join Waitlist
-                    </a>
-                    <a href="#investors" class="px-8 py-4 rounded-xl font-semibold text-center border border-slate-700 bg-slate-900/50 text-slate-300 hover:border-slate-500 transition-all">
-                        Investor Portal ($50k Pre-Seed)
-                    </a>
-                </div>
-            </div>
+    <section class="hero">
+        <div class="hero-badge">Women-Led Executive Mobility</div>
+        <h1>Redefining Premium Travel with <span>Elite Chauffeur Logistics</span></h1>
+        <p>DRIMAND connects private vehicle owners, corporate fleets, and VIPs across Nigeria with multi-vetted, professional chauffeurs for secure, effortless transportation.</p>
+        <div>
+            <a href="mailto:suxanmiles@outlook.com" class="btn-cobalt" style="padding: 14px 32px; font-size: 1rem;">Request Executive Pitch</a>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="border-y border-slate-800/80 bg-slate-950/50 py-10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div><p class="text-3xl font-extrabold text-white">4+ Hours</p><p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Daily Traffic Saved</p></div>
-            <div><p class="text-3xl font-extrabold text-amber-500">22%</p><p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Platform Margin</p></div>
-            <div><p class="text-3xl font-extrabold text-white">100%</p><p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Asset-Light Model</p></div>
-            <div><p class="text-3xl font-extrabold text-amber-500">3-Tier</p><p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Revenue Architecture</p></div>
+    <section class="features" id="services">
+        <div class="card">
+            <div class="card-icon">01</div>
+            <h3>On-Demand Dispatch</h3>
+            <p>Flexible daily or pay-per-trip chauffeur bookings for personal vehicles with real-time telematics tracking.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">02</div>
+            <h3>VIP Concierge</h3>
+            <p>Dedicated chauffeur retainers for executives, high-net-worth individuals, media events, and luxury short-lets.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">03</div>
+            <h3>Corporate Fleets</h3>
+            <p>Contracted recurring driver staffing to eliminate corporate payroll liabilities and administrative overhead.</p>
         </div>
     </section>
 
-    <!-- Tri-Core Model Section -->
-    <section id="services" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-3">Revenue Architecture</h2>
-            <p class="text-3xl font-bold text-white">The DRIMAND Tri-Core Model</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card rounded-2xl p-8 border border-slate-800">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-6">01</div>
-                <h3 class="text-xl font-bold text-white mb-3">On-Demand B2C App</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">"Drive My Car" hourly or per-trip dispatch for daily commutes & night trips.</p>
-            </div>
-            <div class="glass-card rounded-2xl p-8 border border-slate-800">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-6">02</div>
-                <h3 class="text-xl font-bold text-white mb-3">VIP & Concierge</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">Dedicated day-rate drivers for luxury events, international guests, and HNIs.</p>
-            </div>
-            <div class="glass-card rounded-2xl p-8 border border-slate-800">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-6">03</div>
-                <h3 class="text-xl font-bold text-white mb-3">B2B Retainers</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">Contractual driver supply for corporate fleets and short-let hospitality networks.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Investor Portal -->
-    <section id="investors" class="py-20 max-w-7xl mx-auto px-6">
-        <div class="glass-card rounded-3xl p-8 md:p-12 border border-amber-500/20">
-            <div class="max-w-2xl">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Pre-Seed Opportunity</span>
-                <h2 class="text-3xl font-bold text-white mt-2 mb-4">Raising $50,000 USD</h2>
-                <p class="text-slate-400 text-sm mb-8">Connect with Founder & CEO Chisom Susan Nwakaego Okeke to request our 3-page Memorandum or Financial Model.</p>
-                <form id="waitlist" onsubmit="event.preventDefault(); alert('Thank you! Request submitted.');" class="space-y-4">
-                    <input type="text" placeholder="Your Name" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                    <input type="email" placeholder="Your Email Address" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                    <button type="submit" class="w-full py-4 rounded-xl font-bold gold-gradient text-slate-950">Submit Request</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-slate-900 py-8 bg-slate-950 text-center text-xs text-slate-600">
-        &copy; 2026 DRIMAND Technologies. All rights reserved.
+    <footer>
+        <p>&copy; 2026 DRIMAND Mobility Platform. All rights reserved. | Lagos, Nigeria</p>
     </footer>
+
 </body>
 </html>
